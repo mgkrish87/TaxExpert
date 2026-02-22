@@ -1,0 +1,44 @@
+# ══════════════════════════════════════════════════════════════
+# TaxExpert AI — Render Blueprint (render.yaml)
+# Deploy with one click: https://render.com/deploy
+# ══════════════════════════════════════════════════════════════
+
+databases:
+  - name: taxexpert-db
+    plan: free
+    databaseName: taxexpert
+    user: taxexpert
+
+services:
+  # ─── Backend API ───
+  - type: web
+    name: taxexpert-api
+    runtime: python
+    rootDir: backend
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: taxexpert-db
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "false"
+      - key: CORS_ORIGINS
+        value: "https://taxexpert-frontend.onrender.com"
+    healthCheckPath: /health
+
+  # ─── Frontend Static Site ───
+  - type: web
+    name: taxexpert-frontend
+    runtime: static
+    rootDir: frontend
+    plan: free
+    buildCommand: echo "Static site, no build needed"
+    headers:
+      - path: /*
+        name: Cache-Control
+        value: public, max-age=3600

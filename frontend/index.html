@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaxExpert AI — India's Smartest Tax Filing Platform</title>
+    <meta name="description"
+        content="AI-powered tax filing, deduction discovery, and compliance automation for Indian taxpayers. File ITR in minutes with TaxExpert AI.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- ═══════════════════════ NAVBAR ═══════════════════════ -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo" onclick="navigateTo('landing')">
+                <span class="logo-icon">⚡</span>
+                <span class="logo-text">TaxExpert<span class="logo-ai">AI</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="#features" class="nav-link" data-guest>Features</a>
+                <a href="#how-it-works" class="nav-link" data-guest>How It Works</a>
+                <a onclick="navigateTo('dashboard')" class="nav-link" data-auth style="display:none;">Dashboard</a>
+                <a onclick="navigateTo('filing')" class="nav-link" data-auth style="display:none;">File ITR</a>
+                <a onclick="navigateTo('documents')" class="nav-link" data-auth style="display:none;">Documents</a>
+                <a onclick="navigateTo('profile')" class="nav-link" data-auth style="display:none;">Profile</a>
+            </div>
+            <div class="nav-actions">
+                <button class="btn btn-ghost" data-guest onclick="navigateTo('login')">Sign In</button>
+                <button class="btn btn-primary" data-guest onclick="navigateTo('register')">Get Started Free</button>
+                <div class="user-menu" data-auth style="display:none;">
+                    <span class="user-greeting" id="userGreeting">Hi, User</span>
+                    <button class="btn btn-ghost btn-sm" onclick="logout()">Logout</button>
+                </div>
+            </div>
+            <button class="nav-toggle" onclick="toggleMobileMenu()">☰</button>
+        </div>
+    </nav>
+
+    <!-- ═══════════════════════ MAIN CONTENT ═══════════════════════ -->
+    <main id="appContent">
+        <!-- Pages are rendered here by the router -->
+    </main>
+
+    <!-- ═══════════════════════ TOAST NOTIFICATIONS ═══════════════════════ -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Scripts -->
+    <script src="api.js"></script>
+    <script src="pages.js"></script>
+    <script src="pages-filing.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

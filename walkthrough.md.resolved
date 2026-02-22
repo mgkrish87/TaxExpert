@@ -1,0 +1,86 @@
+# TaxExpert AI — Phase 1 MVP Walkthrough
+
+## What Was Built
+
+A full-stack AI-powered tax filing platform for Indian taxpayers with:
+
+| Layer | Technology | Status |
+|-------|-----------|--------|
+| **Backend** | FastAPI + SQLAlchemy + SQLite | ✅ Running |
+| **Frontend** | Vanilla HTML/CSS/JS SPA | ✅ Running |
+| **Tax Engine** | FY 2025-26 slabs (Old + New regime) | ✅ Verified |
+| **Auth** | JWT + bcrypt | ✅ Working |
+
+---
+
+## Landing Page
+
+![Landing page with hero section and premium dark fintech design](C:\Users\marri\.gemini\antigravity\brain\0c629778-6549-480c-8159-ac8fbdc5158d\landing_page.png)
+
+---
+
+## Full Filing Flow Demo
+
+![End-to-end recording: registration → filing wizard → tax calculation → suggestions → review](C:\Users\marri\.gemini\antigravity\brain\0c629778-6549-480c-8159-ac8fbdc5158d\full_flow_test_1771774753272.webp)
+
+---
+
+## Files Created
+
+### Backend (10 files)
+| File | Purpose |
+|------|---------|
+| [main.py](file:///c:/Users/marri/OneDrive/Documents/TaxExpert/backend/main.py) | FastAPI app with CORS, lifespan, routers |
+| [config.py](file:///c:/Users/marri/OneDrive/Documents/TaxExpert/backend/config.py) | Env-driven settings |
+| [database.py](file:///c:/Users/marri/OneDrive/Documents/TaxExpert/backend/database.py) | Async SQLAlchemy engine |
+| [models/user.py](file:///c:/Users/marri/OneDrive/Documents/TaxExpert/backend/models/user.py) | User model with PAN/Aadhaar |
+| [models/filing.py](file:///c:/Users/marri/OneDrive/Documents/TaxExpert/backend/models/filing.py) | Filing model with JSON wizard data |
+| [models/document.py](file:///c:/Users/marri/OneDrive/Documents/TaxExpert/backend/models/document.py) | Document upload model |
+| [routers/auth.py](file:///c:/Users/marri/OneDrive/Documents/TaxExpert/backend/routers/auth.py) | Register, Login, Me endpoints |
+| [routers/filings.py](file:///c:/Users/marri/OneDrive/Documents/TaxExpert/backend/routers/filings.py) | CRUD + tax calculation |
+| [services/tax_engine.py](file:///c:/Users/marri/OneDrive/Documents/TaxExpert/backend/services/tax_engine.py) | Indian tax slabs, regime comparison, optimization |
+| [utils/security.py](file:///c:/Users/marri/OneDrive/Documents/TaxExpert/backend/utils/security.py) | JWT + bcrypt utilities |
+
+### Frontend (5 files)
+| File | Purpose |
+|------|---------|
+| [index.html](file:///c:/Users/marri/OneDrive/Documents/TaxExpert/frontend/index.html) | SPA shell with navbar |
+| [styles.css](file:///c:/Users/marri/OneDrive/Documents/TaxExpert/frontend/styles.css) | Design system (900+ lines) |
+| [api.js](file:///c:/Users/marri/OneDrive/Documents/TaxExpert/frontend/api.js) | API client + auth + toasts |
+| [pages.js](file:///c:/Users/marri/OneDrive/Documents/TaxExpert/frontend/pages.js) | Landing, login, register, dashboard |
+| [pages-filing.js](file:///c:/Users/marri/OneDrive/Documents/TaxExpert/frontend/pages-filing.js) | Filing wizard, documents, profile |
+| [app.js](file:///c:/Users/marri/OneDrive/Documents/TaxExpert/frontend/app.js) | SPA router + canvas charts |
+
+---
+
+## Verification Results
+
+| Test | Result |
+|------|--------|
+| Landing page renders | ✅ Premium dark design with hero, features, stats |
+| User registration | ✅ Account created via API |
+| Dashboard loads | ✅ Stats cards and filing history |
+| Filing wizard — Personal Details | ✅ Name, PAN, DOB, Employer |
+| Filing wizard — Income entry | ✅ ₹12,00,000 salary + ₹50,000 other |
+| Filing wizard — Deductions | ✅ 80C: ₹1.5L, 80D: ₹25K, TDS: ₹1L |
+| Tax calculation engine | ✅ Old vs New regime comparison rendered |
+| Regime recommendation | ✅ New Regime recommended (₹0 tax, saves ₹1,17,000) |
+| Optimization suggestions | ✅ NPS + Home Loan suggestions shown |
+| Review & submit | ✅ Filing summary correct |
+
+---
+
+## How to Run
+
+```bash
+# Terminal 1 — Backend
+cd backend
+pip install -r requirements.txt
+python -m uvicorn main:app --port 8000
+
+# Terminal 2 — Frontend
+cd frontend
+python -m http.server 3000
+```
+
+Open http://localhost:3000
