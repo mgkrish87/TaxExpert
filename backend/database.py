@@ -3,7 +3,7 @@
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine, async_sessionmaker
 from sqlalchemy.orm import DeclarativeBase
 
-from config import settings
+from backend.config import settings
 
 # Render provides DATABASE_URL as "postgres://..." or "postgresql://..."
 # We need "postgresql+asyncpg://..." for async, or keep sqlite for dev
