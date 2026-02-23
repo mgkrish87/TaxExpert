@@ -6,7 +6,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from backend.config import settings
-from database import init_db
+from backend.database import init_db
 from routers import auth, users, filings, documents, admin
 
 
