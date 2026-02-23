@@ -4,15 +4,15 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from database import get_db
-from models.user import User
-from models.filing import Filing
-from schemas.filing import (
+from backend.database import get_db
+from backend.models.user import User
+from backend.models.filing import Filing
+from backend.schemas.filing import (
     FilingCreate, FilingUpdate, FilingResponse,
     TaxComparisonResponse, IncomeData, DeductionData,
 )
-from services.tax_engine import compare_regimes, generate_optimization_suggestions
-from utils.security import get_current_user
+from backend.services.tax_engine import compare_regimes, generate_optimization_suggestions
+from backend.utils.security import get_current_user
 
 router = APIRouter(prefix="/api/filings", tags=["Filings"])
 

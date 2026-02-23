@@ -7,12 +7,12 @@ from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from config import settings
-from database import get_db
-from models.user import User
-from models.document import Document
-from schemas.document import DocumentResponse
-from utils.security import get_current_user
+from backend.config import settings
+from backend.database import get_db
+from backend.models.user import User
+from backend.models.document import Document
+from backend.schemas.document import DocumentResponse
+from backend.utils.security import get_current_user
 
 router = APIRouter(prefix="/api/documents", tags=["Documents"])
 

@@ -7,8 +7,8 @@ Usage:
 import sys
 import asyncio
 from sqlalchemy import select, update
-from database import async_session, init_db
-from models.user import User
+from backend.database import async_session, init_db
+from backend.models.user import User
 
 
 async def make_admin(email: str):

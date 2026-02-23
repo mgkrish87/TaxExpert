@@ -8,13 +8,13 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy import select, func
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from database import get_db
-from models.user import User
-from models.filing import Filing
-from models.document import Document
-from schemas.user import UserResponse
-from schemas.filing import FilingResponse
-from utils.security import get_current_user
+from backend.database import get_db
+from backend.models.user import User
+from backend.models.filing import Filing
+from backend.models.document import Document
+from backend.schemas.user import UserResponse
+from backend.schemas.filing import FilingResponse
+from backend.utils.security import get_current_user
 
 router = APIRouter(prefix="/api/admin", tags=["Admin"])
 
